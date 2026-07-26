@@ -52,7 +52,7 @@ npx tsx src/index.ts --html templates/index.html -o output/video.mp4 -d 10 --fps
 
 ## Template System
 
-Single template at `templates/index.html` with 5 scene types:
+Single template at `templates/index.html` powered by **GSAP** (GreenSock Animation Platform, auto-injected). Scene types:
 
 | Type | Purpose |
 |------|---------|
