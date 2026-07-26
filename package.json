@@ -1,0 +1,26 @@
+{
+  "name": "video-generator",
+  "version": "1.0.0",
+  "description": "HTML-to-MP4 video generator for AI agents. Render HTML/CSS/JS animations and record to video.",
+  "type": "module",
+  "bin": {
+    "gen-video": "src/index.ts"
+  },
+  "scripts": {
+    "generate": "tsx src/index.ts",
+    "example": "tsx src/index.ts --html templates/mau-chung.html -o output/video.mp4 -d 10 --fps 30 -v"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "edge-tts-universal": "^1.4.0",
+    "ffmpeg-static": "^5.3.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "puppeteer": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.28",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
