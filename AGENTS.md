@@ -64,8 +64,8 @@ Bạn có thể thêm tệp `.md` vào `scripts/` để AI agent đọc và tạ
 
 ### `templates/index.html` — ⭐ Template duy nhất
 
-Template motion graphics cho nội dung truyền thông, không code, không icon.
-Hiệu ứng cinematic (scanlines, vignette, glow) + safe zone TikTok.
+Motion graphics với **GSAP** (GreenSock Animation Platform) — engine inject tự động.
+Không code editor, không icon. Hiệu ứng cinematic (scanlines, vignette, glow) + safe zone TikTok.
 
 **Cách hoạt động:** Agent định nghĩa mảng `scenes`, mỗi scene có `type` và `dur` (giây).
 Engine tự động chạy tuần tự, tổng `dur` = thời lượng video.
@@ -79,6 +79,11 @@ Engine tự động chạy tuần tự, tổng `dur` = thời lượng video.
 | `list` | Danh sách staggered — items đổ bộ từng cái | Liệt kê, so sánh đối lập (✓/✕) |
 | `compare` | So sánh 2 cột — trái (bad) / phải (good) + badges | Đối chiếu cũ-mới, trước-sau |
 | `outro` | Kết thúc — icon + title + sub + button | CTA, câu hỏi kết, kêu gọi hành động |
+
+**Lưu ý:** Engine tự động inject GSAP (GreenSock Animation Platform) vào template trước khi render.
+Agent có thể dùng `gsap.timeline()` trong scene type mới để tạo hiệu ứng custom.
+
+Các scene type mặc định đã dùng GSAP timeline với `fromTo()`, `stagger`, `ease` — agent chỉ cần sửa object `VIDEO`.
 
 ### Cấu trúc đầy đủ
 
@@ -127,10 +132,31 @@ const VIDEO = {
 };
 ```
 
+### Scene type custom với GSAP
+
+Agent có thể định nghĩa scene type bằng `"type": "custom"` kèm function `buildTimeline`:
+
+```javascript
+// Trong VIDEO.scenes, thêm:
+{
+  type: "custom",
+  dur: 6,
+  buildTimeline(el) {
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(el.querySelector('.my-el'), { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' });
+    return tl;
+  },
+  html: '<div class="my-el">Custom content</div>',
+}
+```
+
+Mọi easing, stagger, timeline của GSAP đều dùng được. Xem [GSAP Docs](https://gsap.com/docs/).
+
 ### Hướng dẫn cho AI Agent
 
 1. **Đọc kịch bản** từ `scripts/` trước. Hiểu cấu trúc nội dung: hook → thân bài → kết luận.
-2. **Chia kịch bản thành scenes** phù hợp với 5 type trên. Mỗi scene = 1 ý chính.
+2. **Chia kịch bản thành scenes** phù hợp với 5 type mặc định hoặc custom. Mỗi scene = 1 ý chính.
 3. **Tính `dur` cho mỗi scene:**
    - `hero`: 5-7s (đủ đọc hook)
    - `content`: 10-16s (tuỳ độ dài body)

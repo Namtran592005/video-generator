@@ -13,7 +13,6 @@ body {
   overflow: hidden;
 }
 
-/* Cinematic overlay */
 .scanlines {
   position: fixed; inset: 0; pointer-events: none; z-index: 300;
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
@@ -22,8 +21,6 @@ body {
   position: fixed; inset: 0; pointer-events: none; z-index: 250;
   background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.35) 100%);
 }
-
-/* Floating orbs */
 .orb {
   position: fixed; border-radius: 50%; pointer-events: none; z-index: -1;
   animation: orbFloat 18s ease-in-out infinite;
@@ -39,7 +36,6 @@ body {
   75% { transform: translate(15px, -15px) scale(1.05); }
 }
 
-/* Scene container */
 .scene {
   position: absolute; left: 60px; right: 60px; top: 120px; bottom: 200px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -49,121 +45,66 @@ body {
 }
 .scene.active { opacity: 1; transform: scale(1); }
 
-/* ── Hero ── */
 .sc-hero .hr-icon {
   width: 70px; height: 70px; margin-bottom: 20px;
-  display: flex; align-items: center; justify-content: center; opacity: 0;
+  display: flex; align-items: center; justify-content: center;
 }
 .sc-hero .hr-diamond {
   width: 36px; height: 36px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
-.sc-hero .hr-title {
-  font-size: 100px; font-weight: 800; line-height: 1.15; text-align: center;
-  max-width: 960px;
-}
-.sc-hero .hr-title .hl-row {
-  display: block; opacity: 0;
-}
+.sc-hero .hr-title { font-size: 100px; font-weight: 800; line-height: 1.15; text-align: center; max-width: 960px; }
+.sc-hero .hr-title .hl-row { display: block; }
 .sc-hero .hr-title .accent {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.sc-hero .hr-sub {
-  font-size: 36px; color: #9ca3af; text-align: center; margin-top: 22px; opacity: 0;
-}
+.sc-hero .hr-sub { font-size: 36px; color: #9ca3af; text-align: center; margin-top: 22px; }
 
-/* ── Content ── */
 .sc-content { padding: 20px 10px; gap: 24px; }
-.sc-content .co-title {
-  font-size: 68px; font-weight: 700; line-height: 1.3; text-align: center;
-  max-width: 940px; color: #fff; opacity: 0;
-}
-.sc-content .co-title .highlight {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.sc-content .co-body {
-  font-size: 42px; line-height: 1.65; text-align: center;
-  max-width: 920px; color: #d1d5db;
-}
-.sc-content .co-body .co-seg {
-  display: block; opacity: 0; transform: translateY(16px);
-}
+.sc-content .co-title { font-size: 68px; font-weight: 700; line-height: 1.3; text-align: center; max-width: 940px; color: #fff; }
+.sc-content .co-body { font-size: 42px; line-height: 1.65; text-align: center; max-width: 920px; color: #d1d5db; }
+.sc-content .co-body .co-seg { display: block; }
 .sc-content .co-body b { color: #fff; font-weight: 700; }
 .sc-content .co-body .hl { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
 
-/* ── List ── */
-.sc-list .li-items {
-  display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 920px;
-}
+.sc-list .li-items { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 920px; }
 .sc-list .li-item {
-  display: flex; align-items: center; gap: 20px;
-  padding: 22px 28px; border-radius: 16px;
+  display: flex; align-items: center; gap: 20px; padding: 22px 28px; border-radius: 16px;
   background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-  opacity: 0;
 }
 .sc-list .li-item .li-text { font-size: 50px; font-weight: 700; line-height: 1.25; }
 .sc-list .li-item .li-desc { font-size: 34px; color: #9ca3af; margin-top: 4px; line-height: 1.3; }
 
-/* ── Compare ── */
-.sc-compare .cp-wrap {
-  display: flex; gap: 20px; width: 100%; max-width: 920px;
-}
+.sc-compare .cp-wrap { display: flex; gap: 20px; width: 100%; max-width: 920px; }
 .sc-compare .cp-side {
   flex: 1; border-radius: 16px; padding: 28px 18px 24px;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  min-height: 340px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px; min-height: 340px;
 }
 .sc-compare .cp-side.bad { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.18); }
 .sc-compare .cp-side.good { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.18); }
 .sc-compare .cp-label { font-size: 30px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
-.sc-compare .cp-item {
-  font-size: 32px; text-align: center; line-height: 1.5; padding: 6px 0; opacity: 0;
-}
-.sc-compare .cp-badges {
-  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px;
-}
-.sc-compare .cp-badge {
-  padding: 10px 26px; border-radius: 50px; background: rgba(34,197,94,0.1);
-  font-size: 28px; font-weight: 600; color: #22c55e; opacity: 0;
-}
+.sc-compare .cp-item { font-size: 32px; text-align: center; line-height: 1.5; padding: 6px 0; }
+.sc-compare .cp-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+.sc-compare .cp-badge { padding: 10px 26px; border-radius: 50px; background: rgba(34,197,94,0.1); font-size: 28px; font-weight: 600; color: #22c55e; }
 
-/* ── Outro ── */
 .sc-outro .ot-icon {
   width: 80px; height: 80px; border-radius: 24px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center; margin-bottom: 22px; opacity: 0;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
 }
 .sc-outro .ot-star {
   width: 32px; height: 32px; background: #fff;
   clip-path: polygon(50% 0%, 80% 30%, 100% 0%, 100% 70%, 80% 100%, 50% 70%, 20% 100%, 0% 70%, 0% 0%, 20% 30%);
 }
-.sc-outro .ot-title {
-  font-size: 68px; font-weight: 800; text-align: center; line-height: 1.25;
-  max-width: 920px;
-}
-.sc-outro .ot-title .ot-row { display: block; opacity: 0; }
-.sc-outro .ot-sub {
-  font-size: 32px; color: #9ca3af; text-align: center; margin-top: 18px; opacity: 0;
-}
-.sc-outro .ot-btn {
-  margin-top: 28px; padding: 18px 50px; border-radius: 50px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  font-size: 30px; font-weight: 700; color: #fff; opacity: 0;
-}
+.sc-outro .ot-title { font-size: 68px; font-weight: 800; text-align: center; line-height: 1.25; max-width: 920px; }
+.sc-outro .ot-title .ot-row { display: block; }
+.sc-outro .ot-sub { font-size: 32px; color: #9ca3af; text-align: center; margin-top: 18px; }
+.sc-outro .ot-btn { margin-top: 28px; padding: 18px 50px; border-radius: 50px; background: linear-gradient(135deg, var(--accent), var(--accent2)); font-size: 30px; font-weight: 700; color: #fff; }
 
-/* Progress */
-.progress-track {
-  position: fixed; bottom: 80px; left: 60px; right: 60px;
-  height: 3px; background: #1c1e20; border-radius: 2px; z-index: 100;
-}
-.progress-fill {
-  height: 100%; width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  border-radius: 2px;
-}
+.progress-track { position: fixed; bottom: 80px; left: 60px; right: 60px; height: 3px; background: #1c1e20; border-radius: 2px; z-index: 100; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -179,9 +120,9 @@ body {
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
 <script>
-// ============================================================
-//  CẤU HÌNH VIDEO — Agent sửa object này
-// ============================================================
+// GSAP sẽ được engine inject tự động
+
+// ===== CẤU HÌNH VIDEO =====
 const VIDEO = {
   accent: "#8b5cf6",
   accent2: "#06b6d4",
@@ -192,59 +133,57 @@ const VIDEO = {
       dur: 7,
       title: "Nếu một ngày AI có thể",
       accent: "tự làm video thì sao?",
-      sub: "Liệu bạn có dám giao phó không?",
+      sub: "Mình đã thử — và kết quả bất ngờ",
     },
     {
       type: "content",
       dur: 12,
-      title: "Mình đã thử",
+      title: "Mình không ngồi dựng",
       body: '<span class="co-seg">Không ngồi dựng từng cảnh.</span><span class="co-seg">Không cắt từng đoạn.</span><span class="co-seg">Không chỉnh từng hiệu ứng.</span>',
     },
     {
       type: "content",
       dur: 14,
-      title: "Chỉ cần mô tả ý tưởng",
-      body: '<span class="co-seg">AI Agent tự lên bố cục.</span><span class="co-seg">Tạo chuyển động, ghép video</span><span class="co-seg">thành một sản phẩm hoàn chỉnh.</span>',
+      title: "Chỉ mô tả ý tưởng",
+      body: '<span class="co-seg">Mình chỉ mô tả ý tưởng.</span><span class="co-seg">AI Agent tự lên bố cục.</span><span class="co-seg">Tạo chuyển động, ghép video hoàn chỉnh.</span>',
     },
     {
       type: "list",
       dur: 14,
       items: [
-        { text: "✕ Tốn hàng giờ dựng", desc: "Ngồi hàng giờ để cắt ghép thủ công" },
-        { text: "✕ Chỉnh sửa liên tục", desc: "Sai một frame phải làm lại từ đầu" },
-        { text: "✕ Phần mềm phức tạp", desc: "Premiere, After Effect — học rất lâu" },
-        { text: "✅ Mô tả bằng câu chữ", desc: "AI Agent hiểu và thực thi ngay" },
-        { text: "✅ Thay đổi tức thì", desc: "Sửa mô tả — video thay đổi theo" },
-        { text: "✅ Tự động hoá", desc: "Từ ý tưởng đến video chỉ trong phút" },
+        { text: "Ton hang gio dung", desc: "Cat ghep thu cong tung frame" },
+        { text: "Chinh sua lien tuc", desc: "Sai mot frame phai lam lai" },
+        { text: "Phan mem phuc tap", desc: "Premiere, After Effect hoc rat lau" },
+        { text: "Mo ta bang cau chu", desc: "AI hieu va thuc thi ngay lap tuc" },
+        { text: "Thay doi tuc thi", desc: "Sua mo ta — video thay doi theo" },
+        { text: "Tu dong hoa", desc: "Tu y tuong den video chi trong phut" },
       ],
     },
     {
       type: "compare",
       dur: 10,
-      left: { label: "✕ Tự dựng video", items: ["Giờ để hoàn thành", "Chỉnh sửa thủ công", "Phần mềm nặng"], side: "bad" },
-      right: { label: "✓ AI Agent làm", items: ["Phút để hoàn thành", "Tự động xử lý", "Chỉ cần trình duyệt"], side: "good" },
-      badges: ["Nhanh hơn 10 lần", "Dễ dàng hơn", "Linh hoạt hơn"],
+      left: { label: "Tu dung video", items: ["Gio de hoan thanh", "Chinh sua thu cong", "Can phan mem nang"], side: "bad" },
+      right: { label: "AI Agent lam", items: ["Phut de hoan thanh", "Tu dong xu ly", "Chi can trinh duyet"], side: "good" },
+      badges: ["Nhanh hon 10 lan", "De dang hon", "Linh hoat hon"],
     },
     {
       type: "outro",
       dur: 8,
-      title: "Bạn sẽ giao cho AI<br>làm video về chủ đề gì?",
-      sub: "Hãy thử ngay hôm nay",
-      btn: "Follow để khám phá thêm →",
+      title: "Ban se giao cho AI<br>lam video ve chu de gi?",
+      sub: "Day moi chi la buoc khoi dau",
+      btn: "Follow de kham pha them",
     },
   ],
 };
 
-// ============================================================
-//  Kết thúc cấu hình
-// ============================================================
-
+// ===== Xây dựng scenes =====
 const a2 = VIDEO.accent2 || "#f472b6";
 document.documentElement.style.setProperty('--accent', VIDEO.accent || '#8b5cf6');
 document.documentElement.style.setProperty('--accent2', a2);
 
 const root = document.getElementById('sceneRoot');
 const scenes = [];
+const timelines = [];
 
 VIDEO.scenes.forEach((cfg, si) => {
   const div = document.createElement('div');
@@ -252,45 +191,35 @@ VIDEO.scenes.forEach((cfg, si) => {
   div.dataset.si = si;
 
   switch (cfg.type) {
-    case 'hero': {
+    case 'hero':
       div.innerHTML = `
         <div class="hr-icon"><div class="hr-diamond"></div></div>
         <div class="hr-title"><span class="hl-row">${cfg.title}</span><span class="hl-row accent">${cfg.accent || ''}</span></div>
-        <div class="hr-sub">${cfg.sub || ''}</div>
-      `;
+        <div class="hr-sub">${cfg.sub || ''}</div>`;
       break;
-    }
-    case 'content': {
+    case 'content':
       div.innerHTML = `
         <div class="co-title">${cfg.title || ''}</div>
-        <div class="co-body">${cfg.body || ''}</div>
-      `;
+        <div class="co-body">${cfg.body || ''}</div>`;
       break;
-    }
     case 'list': {
-      let html = '<div class="li-items">';
-      (cfg.items || []).forEach(item => {
-        html += `<div class="li-item"><div><div class="li-text">${item.text}</div><div class="li-desc">${item.desc || ''}</div></div></div>`;
-      });
-      html += '</div>';
-      div.innerHTML = html;
+      let h = '<div class="li-items">';
+      (cfg.items || []).forEach(item => { h += `<div class="li-item"><div><div class="li-text">${item.text}</div><div class="li-desc">${item.desc || ''}</div></div></div>`; });
+      h += '</div>';
+      div.innerHTML = h;
       break;
     }
     case 'compare': {
-      let html = '<div class="cp-wrap">';
+      let h = '<div class="cp-wrap">';
       [cfg.left, cfg.right].forEach(side => {
         if (!side) return;
-        html += `<div class="cp-side ${side.side || 'bad'}"><div class="cp-label" style="color:${side.side === 'good' ? '#22c55e' : '#ef4444'}">${side.label}</div>`;
-        (side.items || []).forEach((item, i) => {
-          html += `<div class="cp-item" data-ci="${i}">${item}</div>`;
-        });
-        html += '</div>';
+        h += `<div class="cp-side ${side.side || 'bad'}"><div class="cp-label" style="color:${side.side === 'good' ? '#22c55e' : '#ef4444'}">${side.label}</div>`;
+        (side.items || []).forEach((item, i) => { h += `<div class="cp-item" data-ci="${i}">${item}</div>`; });
+        h += '</div>';
       });
-      html += '</div>';
-      if (cfg.badges && cfg.badges.length) {
-        html += '<div class="cp-badges">' + cfg.badges.map(b => `<span class="cp-badge">${b}</span>`).join('') + '</div>';
-      }
-      div.innerHTML = html;
+      h += '</div>';
+      if (cfg.badges && cfg.badges.length) h += '<div class="cp-badges">' + cfg.badges.map(b => `<span class="cp-badge">${b}</span>`).join('') + '</div>';
+      div.innerHTML = h;
       break;
     }
     case 'outro': {
@@ -299,8 +228,7 @@ VIDEO.scenes.forEach((cfg, si) => {
         <div class="ot-icon"><div class="ot-star"></div></div>
         <div class="ot-title">${rows}</div>
         <div class="ot-sub">${cfg.sub || ''}</div>
-        <div class="ot-btn">${cfg.btn || ''}</div>
-      `;
+        <div class="ot-btn">${cfg.btn || ''}</div>`;
       break;
     }
   }
@@ -309,135 +237,69 @@ VIDEO.scenes.forEach((cfg, si) => {
   scenes.push(div);
 });
 
+// ===== Xây dựng GSAP timelines =====
 const totalDur = VIDEO.scenes.reduce((sum, s) => sum + (s.dur || 5), 0);
 
-function eo(t) { return 1 - Math.pow(1 - t, 3); }
-function easeOutBack(t) {
-  const c1 = 1.70158; const c3 = c1 + 1;
-  return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+function buildTimeline(cfg, el) {
+  const tl = gsap.timeline({ paused: true });
+
+  switch (cfg.type) {
+    case 'hero': {
+      const icon = el.querySelector('.hr-icon');
+      const rows = el.querySelectorAll('.hl-row');
+      const sub = el.querySelector('.hr-sub');
+      tl.fromTo(icon, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.15, ease: 'back.out(1.7)' })
+        .fromTo(rows, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', stagger: 0.12 }, 0.15)
+        .fromTo(sub, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, 0.55);
+      break;
+    }
+    case 'content': {
+      const title = el.querySelector('.co-title');
+      const segs = el.querySelectorAll('.co-seg');
+      tl.fromTo(title, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' })
+        .fromTo(segs, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out', stagger: 0.18 }, 0.25);
+      break;
+    }
+    case 'list': {
+      const items = el.querySelectorAll('.li-item');
+      tl.fromTo(items, {
+        opacity: 0,
+        x: (i) => i % 2 === 0 ? -40 : 40
+      }, {
+        opacity: 1, x: 0,
+        duration: 0.25, ease: 'power2.out',
+        stagger: 0.1
+      }, 0);
+      break;
+    }
+    case 'compare': {
+      const items = el.querySelectorAll('.cp-item');
+      const badges = el.querySelectorAll('.cp-badge');
+      tl.fromTo(items, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.15, ease: 'power2.out', stagger: 0.06 }, 0)
+        .fromTo(badges, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: 'power2.out', stagger: 0.05 }, 0.55);
+      break;
+    }
+    case 'outro': {
+      const icon = el.querySelector('.ot-icon');
+      const rows = el.querySelectorAll('.ot-row');
+      const sub = el.querySelector('.ot-sub');
+      const btn = el.querySelector('.ot-btn');
+      tl.fromTo(icon, { opacity: 0, scale: 0.3, rotation: -30 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.18, ease: 'back.out(1.7)' })
+        .fromTo(rows, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.15 }, 0.18)
+        .fromTo(sub, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' }, 0.55)
+        .fromTo(btn, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, 0.72);
+      break;
+    }
+  }
+
+  return tl;
 }
-function lerp(a, b, t) { return a + (b - a) * t; }
-function clamp(v, mn, mx) { return Math.max(mn, Math.min(mx, v)); }
 
-const renderers = {
-  hero(scene, t) {
-    const icon = scene.querySelector('.hr-icon');
-    const rows = scene.querySelectorAll('.hl-row');
-    const sub = scene.querySelector('.hr-sub');
+VIDEO.scenes.forEach((cfg, i) => {
+  timelines[i] = buildTimeline(cfg, scenes[i]);
+});
 
-    if (t < 0.15) {
-      const lt = t / 0.15;
-      icon.style.opacity = easeOutBack(lt);
-      icon.style.transform = `scale(${lerp(0.3, 1, easeOutBack(lt))})`;
-      rows.forEach(r => { r.style.opacity = '0'; });
-      sub.style.opacity = '0';
-    } else if (t < 0.50) {
-      icon.style.opacity = '1'; icon.style.transform = 'scale(1)';
-      const rt = (t - 0.15) / 0.35;
-      rows.forEach((r, i) => {
-        const rr = clamp((rt - i * 0.12) / 0.4, 0, 1);
-        r.style.opacity = eo(rr);
-        r.style.transform = `translateY(${lerp(40, 0, eo(rr))}px)`;
-      });
-      sub.style.opacity = '0';
-    } else {
-      icon.style.opacity = '1'; rows.forEach(r => { r.style.opacity = '1'; r.style.transform = 'translateY(0)'; });
-      const st = (t - 0.50) / 0.50;
-      sub.style.opacity = eo(st);
-      sub.style.transform = `translateY(${lerp(20, 0, eo(st))}px)`;
-    }
-  },
-
-  content(scene, t) {
-    const title = scene.querySelector('.co-title');
-    const segs = scene.querySelectorAll('.co-seg');
-    if (t < 0.25) {
-      const tt = t / 0.25;
-      title.style.opacity = eo(tt);
-      title.style.transform = `translateY(${lerp(30, 0, eo(tt))}px)`;
-      segs.forEach(s => { s.style.opacity = '0'; });
-    } else if (t < 0.80) {
-      title.style.opacity = '1'; title.style.transform = 'translateY(0)';
-      const st = (t - 0.25) / 0.55;
-      segs.forEach((seg, i) => {
-        const sr = clamp((st - i * 0.2) / 0.3, 0, 1);
-        seg.style.opacity = eo(sr);
-        seg.style.transform = `translateY(${lerp(16, 0, eo(sr))}px)`;
-      });
-    } else {
-      title.style.opacity = '1'; segs.forEach(s => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; });
-    }
-  },
-
-  list(scene, t) {
-    const items = scene.querySelectorAll('.li-item');
-    const n = items.length;
-    const animEnd = 0.75;
-    items.forEach((el, i) => {
-      const dir = i % 2 === 0 ? -1 : 1;
-      const slot = animEnd / n;
-      const start = i * slot;
-      const local = clamp((t - start) / (slot * 0.5), 0, 1);
-      const e = eo(local);
-      el.style.opacity = e;
-      el.style.transform = `translate(${lerp(dir * 40, 0, e)}px, 0)`;
-    });
-  },
-
-  compare(scene, t) {
-    const allItems = scene.querySelectorAll('.cp-item');
-    const badges = scene.querySelectorAll('.cp-badge');
-    allItems.forEach((el, i) => {
-      const slot = 0.55 / allItems.length;
-      const start = i * slot;
-      const local = clamp((t - start) / (slot * 0.5), 0, 1);
-      el.style.opacity = eo(local);
-      el.style.transform = `translateY(${lerp(12, 0, eo(local))}px)`;
-    });
-    if (t >= 0.55) {
-      badges.forEach((el, i) => {
-        const bt = clamp((t - 0.55 - i * 0.05) / 0.1, 0, 1);
-        el.style.opacity = eo(bt);
-      });
-    } else {
-      badges.forEach(el => el.style.opacity = '0');
-    }
-  },
-
-  outro(scene, t) {
-    const icon = scene.querySelector('.ot-icon');
-    const rows = scene.querySelectorAll('.ot-row');
-    const sub = scene.querySelector('.ot-sub');
-    const btn = scene.querySelector('.ot-btn');
-    if (t < 0.18) {
-      const lt = t / 0.18;
-      icon.style.opacity = easeOutBack(lt);
-      icon.style.transform = `scale(${lerp(0.3, 1, easeOutBack(lt))}) rotate(${lerp(-30, 0, eo(lt))}deg)`;
-      rows.forEach(r => { r.style.opacity = '0'; }); sub.style.opacity = '0'; btn.style.opacity = '0';
-    } else if (t < 0.48) {
-      icon.style.opacity = '1'; icon.style.transform = 'scale(1) rotate(0deg)';
-      const rt = (t - 0.18) / 0.30;
-      rows.forEach((r, i) => {
-        const rr = clamp((rt - i * 0.15) / 0.4, 0, 1);
-        r.style.opacity = eo(rr);
-        r.style.transform = `translateY(${lerp(30, 0, eo(rr))}px)`;
-      });
-      sub.style.opacity = '0'; btn.style.opacity = '0';
-    } else if (t < 0.70) {
-      icon.style.opacity = '1'; rows.forEach(r => { r.style.opacity = '1'; r.style.transform = 'translateY(0)'; });
-      const st = (t - 0.48) / 0.22;
-      sub.style.opacity = eo(st);
-      sub.style.transform = `translateY(${lerp(16, 0, eo(st))}px)`;
-      btn.style.opacity = '0';
-    } else {
-      icon.style.opacity = '1'; rows.forEach(r => { r.style.opacity = '1'; }); sub.style.opacity = '1'; sub.style.transform = 'translateY(0)';
-      const bt = (t - 0.70) / 0.30;
-      btn.style.opacity = eo(bt);
-      btn.style.transform = `translateY(${lerp(16, 0, eo(bt))}px)`;
-    }
-  },
-};
-
+// ===== Render =====
 function __renderFrame(progress) {
   document.getElementById('progressFill').style.width = `${progress * 100}%`;
 
@@ -447,10 +309,11 @@ function __renderFrame(progress) {
   for (let i = 0; i < VIDEO.scenes.length; i++) {
     const dur = VIDEO.scenes[i].dur || 5;
     if (target < acc + dur) {
-      scenes.forEach((s, j) => s.classList.toggle('active', j === i));
-      const t = (target - acc) / dur;
-      const renderer = renderers[VIDEO.scenes[i].type];
-      if (renderer) renderer(scenes[i], clamp(t, 0, 1));
+      scenes.forEach((s, j) => {
+        s.classList.toggle('active', j === i);
+        if (j !== i && timelines[j]) timelines[j].progress(0);
+      });
+      if (timelines[i]) timelines[i].progress(Math.min((target - acc) / dur, 1));
       return;
     }
     acc += dur;
@@ -458,8 +321,7 @@ function __renderFrame(progress) {
 
   const last = scenes.length - 1;
   scenes.forEach((s, j) => s.classList.toggle('active', j === last));
-  const renderer = renderers[VIDEO.scenes[last].type];
-  if (renderer) renderer(scenes[last], 1);
+  if (timelines[last]) timelines[last].progress(1);
 }
 </script>
 </body>

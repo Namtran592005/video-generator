@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { EdgeTTS } from 'edge-tts-universal';
+import { fileURLToPath } from 'node:url';
 
 declare global {
   interface Window {
@@ -87,6 +88,17 @@ export async function generateVideo(opts: GenerateOptions): Promise<void> {
     }
   }
 
+  // Inject GSAP
+  let renderHtml = html;
+  try {
+    const gsapPath = path.resolve(import.meta.dirname, '..', 'node_modules', 'gsap', 'dist', 'gsap.min.js');
+    const gsapCode = await fs.readFile(gsapPath, 'utf-8');
+    renderHtml = html.replace('</head>', `<script>${gsapCode}</script></head>`);
+    log('GSAP injected', verbose);
+  } catch {
+    log('GSAP not found, skipping', verbose);
+  }
+
   const totalFrames = finalDuration * fps;
   const padLen = String(totalFrames).length;
 
@@ -96,7 +108,7 @@ export async function generateVideo(opts: GenerateOptions): Promise<void> {
   await page.setViewport({ width, height });
 
   log('Rendering HTML...', verbose);
-  await page.setContent(html, { waitUntil: 'load', timeout: 60000 });
+  await page.setContent(renderHtml, { waitUntil: 'load', timeout: 60000 });
   await page.evaluate(() => {
     if (typeof window.__renderFrame !== 'function') {
       window.__renderFrame = () => {};
